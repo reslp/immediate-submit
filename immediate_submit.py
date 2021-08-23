@@ -103,9 +103,9 @@ elif subs == "sge":
 		#print(element, file=sys.stderr)
 			
 		if element == "error" or element == "output":
-			slurm_args += " --%s=%s" %(element, job_properties["cluster"][element].replace("sge", "sge-"+job_properties["cluster"]["job-name"]))
+			sge_args += " --%s=%s" %(element, job_properties["cluster"][element].replace("sge", "sge-"+job_properties["cluster"]["job-name"]))
 		else:
-			slurm_args += " --%s=%s" %(element, job_properties["cluster"][element])
+			sge_args += " --%s=%s" %(element, job_properties["cluster"][element])
 
 		if element in sge_resources:
 			if "nodes" == element: #special case when nodes are specified, in this case threads are ppns
@@ -161,9 +161,9 @@ elif subs == "torque":
 		#print(element, file=sys.stderr)
 		
 		if element == "error" or element == "output":
-			slurm_args += " --%s=%s" %(element, job_properties["cluster"][element].replace("torque", "torque-"+job_properties["cluster"]["job-name"]))
+			sge_args += " --%s=%s" %(element, job_properties["cluster"][element].replace("torque", "torque-"+job_properties["cluster"]["job-name"]))
 		else:
-			slurm_args += " --%s=%s" %(element, job_properties["cluster"][element])
+			sge_args += " --%s=%s" %(element, job_properties["cluster"][element])
 
 		if element in sge_resources:
 			if "nodes" == element: #special case when nodes are specified, in this case threads are ppns
