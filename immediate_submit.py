@@ -41,6 +41,11 @@ print("Submission system:", subs,file=sys.stderr)
 #print(dependencies, file=sys.stderr)
 #print(sys.argv, file=sys.stderr)
 
+# if job-name specified in cluster config file does not correspond to rule name use rule name as job name.
+# this means that there will be no jobs called default anymore. Although the settings of the default rule will still be used (eg. runtime, mem, etc)
+if job_properties["rule"] != job_properties["cluster"]["job-name"]:
+        job_properties["cluster"]["job-name"] = job_properties["rule"]
+
 #list of items recognized by the -l (resource) flag of qsub:
 sge_resources=["nodes", "pmem", "vmem", "mem", "walltime", "h_vmem", "ppn"] #my need to be extended for different clusters
 
