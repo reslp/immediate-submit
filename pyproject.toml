@@ -1,0 +1,18 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "immediate-submit"
+version = "0.1.0"
+description = "Snakemake immediate-submit helper for SLURM, SGE, and TORQUE"
+requires-python = ">=3.8"
+dependencies = [
+  "snakemake",
+]
+
+[project.scripts]
+immediate-submit = "immediate_submit:main"
+
+[tool.hatch.build.targets.wheel]
+py-modules = ["immediate_submit"]
